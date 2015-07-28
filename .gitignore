@@ -6,3 +6,6 @@
 
 # SASS cache
 .sass-cache
+
+# Volt generated files
+app/views/*/*.php

@@ -30,6 +30,21 @@ try {
         $router = new Router();
         $router->removeExtraSlashes(true);
 
+        $router->add('/varnish-log', array(
+            'controller' => 'index',
+            'action' => 'varnishLog'
+        ));
+
+        $router->add('/rss-feed', array(
+            'controller' => 'index',
+            'action' => 'rssFeed'
+        ));
+
+        $router->add('/json-feed', array(
+            'controller' => 'index',
+            'action' => 'jsonFeed'
+        ));
+
         return $router;
     });
 

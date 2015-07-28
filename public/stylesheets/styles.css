@@ -8769,3 +8769,18 @@ button.close {
     display: none !important;
   }
 }
+/*--------------------------------*\
+  # Footer
+\*--------------------------------*/
+/* line 1, ../../sass/_footer.scss */
+footer {
+  width: 100%;
+  height: 40px;
+  position: fixed;
+  bottom: 0;
+  background-color: #f8f8f8;
+}
+/* line 8, ../../sass/_footer.scss */
+footer .container {
+  padding: 10px 15px;
+}
