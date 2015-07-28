@@ -42,10 +42,13 @@ apt-get install -y ntp
 #
 # Apache
 #
-# Installs Apache with prefork MPM and creates and enables virtual host.
+# Installs Apache with prefork MPM, enables rewrite module and creates and enables virtual host.
 #
 
 apt-get install -y apache2 apache2-mpm-prefork
+
+# Enables rewrite_module
+a2enmod rewrite
 
 # Test App virtual host
 cat << EOF > /etc/apache2/sites-available/test-app.dev.conf
