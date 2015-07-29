@@ -17,7 +17,7 @@
             </div>
         </div>
     </nav>
-    <div class="container">
+    <div class="container" style="padding-bottom: 40px;">
         {% block content %} {% endblock %}
     </div>
     <footer>
