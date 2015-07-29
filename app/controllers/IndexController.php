@@ -2,6 +2,7 @@
 namespace TestApp\Controllers;
 
 use Phalcon\Mvc\Controller;
+use TestApp\Components\RssReader;
 
 class IndexController extends Controller
 {
@@ -35,22 +36,11 @@ class IndexController extends Controller
 
     public function rssFeedAction()
     {
-        $articles = [
-            [
-                'title' => 'article-1',
-                'date' => 'date-1'
-            ],
-            [
-                'title' => 'article-2',
-                'date' => 'date-2'
-            ],
-            [
-                'title' => 'article-3',
-                'date' => 'date-3'
-            ]
-        ];
+        $rss = new RssReader('http://www.vg.no/rss/nyfront.php?frontId=1');
+        $rss->fetchData();
+        $rss->sortDataByDate();
 
-        $this->view->articles = $articles;
+        $this->view->articles = $rss->getData();
     }
 
     public function jsonFeedAction()
