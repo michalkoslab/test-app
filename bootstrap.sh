@@ -22,6 +22,15 @@ apt-get upgrade -y
 
 
 #
+# Creates directory for third-party applications executable files.
+#
+
+mkdir /opt/bin
+
+export PATH=$PATH:/opt/bin
+
+
+#
 # Vim
 #
 # Installs Vim editor.
@@ -136,3 +145,29 @@ EOF
 php5enmod xdebug
 
 service apache2 restart
+
+
+#
+# Composer
+#
+# Installs Composer and get dependencies.
+#
+
+apt-get install -y curl
+
+mkdir /opt/Composer
+cd /opt/Composer
+curl -sS https://getcomposer.org/installer | php
+cd ~
+ln -s /opt/Composer/composer.phar /opt/bin/composer
+
+cd /vagrant
+composer install
+
+ln -s /vagrant/vendor/phpunit/phpunit/phpunit /opt/bin/phpunit
+
+#
+# Adds /opt/bin to user's PATH.
+#
+
+echo -e "\n# Add /opt/bin to user's PATH.\nexport PATH=\$PATH:/opt/bin" >> /home/vagrant/.profile
