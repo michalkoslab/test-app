@@ -9,3 +9,6 @@
 
 # Volt generated files
 app/views/*/*.php
+
+# Composer dependencies
+vendor
