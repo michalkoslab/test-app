@@ -4,7 +4,7 @@ Test App
 This app is a solution for recruitment assignment.
 
 
-## Used technolgoies
+## Used technologies
 
 - Vagrant
 - Parallels Desktop/Oracle VirtualBox
@@ -23,6 +23,7 @@ This app is a solution for recruitment assignment.
 The app based on Phalcon framework and MVC architecture pattern. Application bootstrap file registers only Phalcon services required for building this app.
 
 This app was created in a few following steps:
+
 1. Created PhpStorm project.
 2. Initialized Git repository with `.gitignore` file.
 3. Created development server environment based on Vagrant and Parallels Desktop. Box with operating system comes from Atlas (https://atlas.hashicorp.com).
