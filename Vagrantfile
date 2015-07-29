@@ -5,11 +5,12 @@ Vagrant.require_version ">= 1.7.4"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Box configuration
-    config.vm.box = "parallels/ubuntu-14.04"
+    config.vm.box = "ubuntu/trusty64"
 
     # VM configuration
-    config.vm.provider "parallels" do |v|
-        v.memory = 512
+    config.vm.provider "virtualbox" do |v|
+        v.memory = 2048
+        v.cpus = 1
     end
 
     # Welcome message
@@ -19,7 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
 
     # Synced folders
-    config.vm.synced_folder ".", "/vagrant", :owner => 'root', :group => 'root', :mount_options => ["share"]
+    config.vm.synced_folder ".", "/vagrant", :owner => 'root', :group => 'root', :mount_options => ["dmode=777", "fmode=777"]
 
     # Provisioning script
     config.vm.provision "shell", path: "bootstrap.sh"
