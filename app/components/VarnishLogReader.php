@@ -21,7 +21,7 @@ class VarnishLogReader implements ReaderInterface
     /**
      * Sets resource url.
      *
-     * @param $resource Varnish log file url.
+     * @param $resource string Varnish log file url.
      */
     public function __construct($resource)
     {
