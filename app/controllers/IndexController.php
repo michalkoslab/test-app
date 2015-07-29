@@ -2,6 +2,7 @@
 namespace TestApp\Controllers;
 
 use Phalcon\Mvc\Controller;
+use TestApp\Components\VarnishLogReader;
 use TestApp\Components\RssReader;
 use TestApp\Components\JsonReader;
 
@@ -15,24 +16,11 @@ class IndexController extends Controller
 
     public function varnishLogAction()
     {
-        $mostTrafficHostnames = [
-            'hostname-1',
-            'hostname-2',
-            'hostname-3',
-            'hostname-4',
-            'hostname-5'
-        ];
+        $varnishLog = new VarnishLogReader('../app/resources/varnish.log');
+        $varnishLog->fetchData();
 
-        $mostRequestedFiles = [
-            'file-1',
-            'file-2',
-            'file-3',
-            'file-4',
-            'file-5'
-        ];
-
-        $this->view->hostnames = $mostTrafficHostnames;
-        $this->view->files = $mostRequestedFiles;
+        $this->view->hostnames = $varnishLog->getTheMostTrafficHostnames(5);
+        $this->view->files = $varnishLog->getTheMostRequestedFiles(5);
     }
 
     public function rssFeedAction()
