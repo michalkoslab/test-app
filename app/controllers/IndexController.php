@@ -3,6 +3,7 @@ namespace TestApp\Controllers;
 
 use Phalcon\Mvc\Controller;
 use TestApp\Components\RssReader;
+use TestApp\Components\JsonReader;
 
 class IndexController extends Controller
 {
@@ -45,30 +46,10 @@ class IndexController extends Controller
 
     public function jsonFeedAction()
     {
-        $articles = [
-            [
-                'title' => 'article-1',
-                'link' => 'link-1',
-                'description' => 'description-1',
-                'date' => 'date-1',
-                'time' => 'time-1',
-                'category' => 'category-1'
-            ],
-            [
-                'title' => 'article-2',
-                'link' => 'link-2',
-                'description' => 'description-2',
-                'date' => 'date-2',
-                'time' => 'time-2',
-            ],
-            [
-                'title' => 'article-3',
-                'link' => 'link-3',
-                'date' => 'date-3',
-                'time' => 'time-3',
-            ]
-        ];
+        $json = new JsonReader('http://rexxars.com/playground/testfeed/');
+        $json->fetchData();
+        $json->sortDataByDate();
 
-        $this->view->articles = $articles;
+        $this->view->articles = $json->getData();
     }
 }
